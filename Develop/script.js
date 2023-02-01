@@ -26,15 +26,15 @@ var today = dayjs()
 
 $(document).ready(function(){  
 
-  //this is to cover #1 todo...
-  $("#currentDay").text(today.format("dddd, MMMM D"));
-  $(".saveBtn").on("click",function(){
+  //this is to cover #1 AND #4 todo...
+  $("#currentDay").text(today.format("dddd, MMMM D")); //Displaying today's date
+  $(".saveBtn").on("click",function(){ //saving user's input
     var inputText = $(this).siblings(".description").val();
     var time = $(this).parent().attr("id");
-    console.log(time, inputText)
+    console.log(time, inputText) //personal use to make sure it is being consoled into the right time
     localStorage.setItem(time, inputText);
   });
-
+  //#1 todo cont, creating ID's for each input that will be used for later
   $("#7 .description").val(localStorage.getItem("7"));
   $("#8 .description").val(localStorage.getItem("8"));
   $("#9 .description").val(localStorage.getItem("9"));
@@ -54,10 +54,10 @@ $(document).ready(function(){
   $("#23 .description").val(localStorage.getItem("23"));
   $("#24 .description").val(localStorage.getItem("24"));
 
-
+  //this will be for #3 todo, using ID to know which class past, present, future to apply
   function timeChange(){
     var currentHour = today.hour();
-
+    //calls id to check against current time
     $(".time-block").each(function(){
       var idTime = parseInt($(this).attr("id"));
       if(idTime < currentHour){
@@ -72,6 +72,7 @@ $(document).ready(function(){
       }
     })
   }
+  //calls function
   timeChange();
   var timeInterval = setInterval(timeChange, 1000);
 
