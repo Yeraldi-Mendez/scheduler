@@ -22,40 +22,43 @@
   // 4: TODO: Add code to display the current date in the header of the page.
 //});
 
+var today = dayjs()
+
 $(document).ready(function(){  
 
   //this is to cover #1 todo...
-  $("#currentDay").text(moment().format("dddd, MMMM Do"));
+  $("#currentDay").text(today.format("dddd, MMMM D"));
   $(".saveBtn").on("click",function(){
-    var text = $(this).sibilings(".description").val();
+    var inputText = $(this).siblings(".description").val();
     var time = $(this).parent().attr("id");
-    localStorage.setItem(time, text);
+    console.log(time, inputText)
+    localStorage.setItem(time, inputText);
   });
 
-  $("#7.description").val(localStorage.getItem("7"));
-  $("#8.description").val(localStorage.getItem("8"));
-  $("#9.description").val(localStorage.getItem("9"));
-  $("#10.description").val(localStorage.getItem("10"));
-  $("#11.description").val(localStorage.getItem("11"));
-  $("#12.description").val(localStorage.getItem("12"));
-  $("#13.description").val(localStorage.getItem("13"));
-  $("#14.description").val(localStorage.getItem("14"));
-  $("#15.description").val(localStorage.getItem("15"));
-  $("#16.description").val(localStorage.getItem("16"));
-  $("#17.description").val(localStorage.getItem("17"));
-  $("#18.description").val(localStorage.getItem("18"));
-  $("#19.description").val(localStorage.getItem("19"));
-  $("#20.description").val(localStorage.getItem("20"));
-  $("#21.description").val(localStorage.getItem("21"));
-  $("#22.description").val(localStorage.getItem("22"));
-  $("#23.description").val(localStorage.getItem("23"));
-  $("#24.description").val(localStorage.getItem("24"));
+  $("#7 .description").val(localStorage.getItem("7"));
+  $("#8 .description").val(localStorage.getItem("8"));
+  $("#9 .description").val(localStorage.getItem("9"));
+  $("#10 .description").val(localStorage.getItem("10"));
+  $("#11 .description").val(localStorage.getItem("11"));
+  $("#12 .description").val(localStorage.getItem("12"));
+  $("#13 .description").val(localStorage.getItem("13"));
+  $("#14 .description").val(localStorage.getItem("14"));
+  $("#15 .description").val(localStorage.getItem("15"));
+  $("#16 .description").val(localStorage.getItem("16"));
+  $("#17 .description").val(localStorage.getItem("17"));
+  $("#18 .description").val(localStorage.getItem("18"));
+  $("#19 .description").val(localStorage.getItem("19"));
+  $("#20 .description").val(localStorage.getItem("20"));
+  $("#21 .description").val(localStorage.getItem("21"));
+  $("#22 .description").val(localStorage.getItem("22"));
+  $("#23 .description").val(localStorage.getItem("23"));
+  $("#24 .description").val(localStorage.getItem("24"));
 
 
   function timeChange(){
-    var currentHour = moment().hour();
+    var currentHour = today.hour();
 
-    $('.time-block').each(function(){
+    $(".time-block").each(function(){
       var idTime = parseInt($(this).attr("id"));
       if(idTime < currentHour){
         $(this).addClass("past");
